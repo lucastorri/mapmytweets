@@ -943,3 +943,14 @@ Processing TweetsMapController#map (for 127.0.0.1 at 2010-10-05 13:04:24) [GET]
   Parameters: {"user"=>"jvortmann"}
 Rendering tweets_map/map
 Completed in 3802ms (View: 3, DB: 0) | 200 OK [http://localhost/map/jvortmann]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-10-05 13:05:42) [GET]
+Rendering home/index
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TweetsMapController#map (for 127.0.0.1 at 2010-10-05 13:05:48) [GET]
+  Parameters: {"user"=>"lucastorri"}
+Rendering tweets_map/map
+Completed in 5134ms (View: 2, DB: 0) | 200 OK [http://localhost/map/lucastorri]
