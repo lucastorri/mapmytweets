@@ -1,0 +1,15 @@
+.bundle
+coverage
+coverage/*
+log/*
+tmp
+tmp/*
+*.DS_Store
+.rvmrc
+*.sqlite3
+*.swp
+bin/*
+cache/*
+gems/*
+specifications/*
+.rvmrc

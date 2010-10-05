@@ -1,0 +1,89 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Google Maps JavaScript API v3 Example: Overlay Removal</title> 
+<link href="http://code.google.com/apis/maps/documentation/javascript/examples/standard.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+<script type="text/javascript">
+
+  var map;
+  function initialize() {
+    var myLatlng = new google.maps.LatLng(0,0);
+    var myOptions = {
+      zoom: 1,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  }
+
+  function placeTweet(obj) {
+
+      var location = new google.maps.LatLng(obj.coordinates[0], obj.coordinates[1]);
+      var marker = new google.maps.Marker({
+        position: location, 
+        map: map
+      });
+      attachMessage(marker, obj.text);
+ }
+
+  function attachMessage(marker, message) {
+    var infowindow = new google.maps.InfoWindow(
+        { content: message,
+          size: new google.maps.Size(50,50)
+        });
+     google.maps.event.addListener(marker, 'click', function() {
+       infowindow.open(map,marker);
+     });
+  } 
+  
+  function submitForm()
+{ 
+    var xhr; 
+    try {  xhr = new ActiveXObject('Msxml2.XMLHTTP');   }
+    catch (e) 
+    {
+        try {   xhr = new ActiveXObject('Microsoft.XMLHTTP');    }
+        catch (e2) 
+        {
+          try {  xhr = new XMLHttpRequest();     }
+          catch (e3) {  xhr = false;   }
+        }
+     }
+  
+    xhr.onreadystatechange  = function()
+    {
+         if(xhr.readyState  == 4)
+         {
+              if(xhr.status  == 200) {
+                 r = eval('(' + xhr.responseText + ')');
+                 for (k in r)
+				    {
+				        if(false) {
+					        eval(r[k].error);
+				        } else {
+				            //alert(r[k].text + '[' + r[k].coordinates[0] + '|' + r[k].coordinates[1] +']');
+				            placeTweet(r[k]);
+				        }
+				    }
+              } else { 
+                 alert("Error in ajax");
+              }
+         }
+    }; 
+
+   var path = "map/" + document.ajax.dyn.value;
+   xhr.open("GET", path, true); 
+   xhr.send(null); 
+} 
+</script> 
+</head> 
+<body onload="initialize();"> 
+<FORM method="POST" name="ajax" action="">                  
+         @<INPUT type="text" name="dyn"  value="lucastorri"> 
+         <INPUT type="BUTTON" value="Submit"  ONCLICK="submitForm()">
+    </FORM>
+  <div id="map_canvas" style="width:800px; height:500px"></div> 
+</body> 
+</html> 

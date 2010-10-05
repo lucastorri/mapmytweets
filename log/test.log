@@ -1,0 +1,32 @@
+
+
+Processing TweetsMapController#map_tweets (for 0.0.0.0 at 2010-10-03 00:54:11) [GET]
+  Parameters: {"user"=>"lucastorri"}
+
+
+Processing TweetsMapController#map (for 0.0.0.0 at 2010-10-03 09:25:06) [GET]
+  Parameters: {"user"=>"lucastorri"}
+
+
+Processing TweetsMapController#map (for 0.0.0.0 at 2010-10-03 09:26:38) [GET]
+  Parameters: {"user"=>"lucastorri"}
+Rendering tweets_map/map
+Completed in 57ms (View: 56, DB: 0) | 200 OK [http://test.host/map/lucastorri]
+
+
+Processing TweetsMapController#map (for 0.0.0.0 at 2010-10-03 09:26:57) [GET]
+  Parameters: {"user"=>"lucastorri"}
+Rendering tweets_map/map
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://test.host/map/lucastorri]
+
+
+Processing TweetsMapController#map (for 0.0.0.0 at 2010-10-03 09:29:45) [GET]
+  Parameters: {"user"=>"lucastorri"}
+Rendering tweets_map/map
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://test.host/map/lucastorri]
+
+
+Processing TweetsMapController#map (for 0.0.0.0 at 2010-10-04 18:18:37) [GET]
+  Parameters: {"user"=>"public_t"}
+Rendering tweets_map/map
+Completed in 24ms (View: 22, DB: 0) | 200 OK [http://test.host/map/public_t]
