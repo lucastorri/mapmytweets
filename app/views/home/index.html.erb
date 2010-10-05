@@ -7,6 +7,8 @@
 <script type="text/javascript">
 
   var map;
+  var markersArray = [];
+  
   function initialize() {
     var myLatlng = new google.maps.LatLng(0,0);
     var myOptions = {
@@ -26,6 +28,7 @@
         map: map
       });
       attachMessage(marker, obj.text);
+      markersArray.push(marker);
  }
 
   function attachMessage(marker, message) {
@@ -38,8 +41,18 @@
      });
   } 
   
+  function deleteOverlays() {
+    if (markersArray) {
+      for (i in markersArray) {
+        markersArray[i].setMap(null);
+      }
+      markersArray.length = 0;
+    }
+  }
+  
   function submitForm()
-{ 
+  { 
+  	deleteOverlays();
     var xhr; 
     try {  xhr = new ActiveXObject('Msxml2.XMLHTTP');   }
     catch (e) 
@@ -60,8 +73,8 @@
                  r = eval('(' + xhr.responseText + ')');
                  for (k in r)
 				    {
-				        if(false) {
-					        eval(r[k].error);
+				        if(false) { // that's because I'm very good in JS
+					        //TODO show error message
 				        } else {
 				            //alert(r[k].text + '[' + r[k].coordinates[0] + '|' + r[k].coordinates[1] +']');
 				            placeTweet(r[k]);
@@ -81,7 +94,7 @@
 </head> 
 <body onload="initialize();"> 
 <FORM method="POST" name="ajax" action="">                  
-         @<INPUT type="text" name="dyn"  value="lucastorri"> 
+         @<INPUT type="text" name="dyn"  value=""> 
          <INPUT type="BUTTON" value="Submit"  ONCLICK="submitForm()">
     </FORM>
   <div id="map_canvas" style="width:800px; height:500px"></div> 
